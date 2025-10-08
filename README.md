@@ -33,25 +33,28 @@ Aplikacija deluje popolnoma v brskalniku in shranjuje podatke v **localStorage**
 web/
 │
 ├─ src/
-│ ├─ lib/
-│ │ ├─ components/ # Svelte komponente (npr. HabitCard)
-│ │ ├─ stores/ # Svelte shrambe (habits.ts, theme.ts)
-│ │ └─ csv.ts # Funkcije za izvoz CSV
-│ ├─ routes/
-│ │ ├─ +layout.svelte # Glavna postavitev
-│ │ ├─ +page.svelte # Nadzorna plošča (Dashboard)
-│ │ ├─ add/+page.svelte # Obrazec za dodajanje (A)
-│ │ ├─ add-b/+page.svelte # Obrazec za dodajanje (B)
-│ │ ├─ habit/[id]/+page.svelte # Podrobnosti posamezne navade
-│ │ └─ settings/+page.svelte # Nastavitve in brisanje podatkov
-│ ├─ app.css # Uvoz Tailwind CSS
-│ └─ app.html # Glavna HTML predloga
+│  ├─ lib/
+│  │  ├─ components/              # Svelte komponente (npr. HabitCard)
+│  │  ├─ stores/                  # Svelte shrambe (habits.ts, theme.ts)
+│  │  └─ csv.ts                   # Funkcije za izvoz CSV
+│  │
+│  ├─ routes/
+│  │  ├─ +layout.svelte           # Glavna postavitev aplikacije
+│  │  ├─ +page.svelte             # Nadzorna plošča (Dashboard)
+│  │  ├─ add/+page.svelte         # Obrazec za dodajanje (A)
+│  │  ├─ add-b/+page.svelte       # Alternativni obrazec (B)
+│  │  ├─ habit/[id]/+page.svelte  # Podrobnosti posamezne navade
+│  │  └─ settings/+page.svelte    # Nastavitve in brisanje podatkov
+│  │
+│  ├─ app.css                     # Uvoz TailwindCSS
+│  └─ app.html                    # Glavna HTML predloga
 │
-├─ tailwind.config.ts # Tailwind konfiguracija
-├─ postcss.config.cjs # PostCSS konfiguracija
-├─ package.json # NPM konfiguracija in skripte
-├─ tsconfig.json # TypeScript konfiguracija
-└─ svelte.config.js # SvelteKit konfiguracija
+├─ postcss.config.cjs             # Konfiguracija za PostCSS
+├─ tailwind.config.ts             # Konfiguracija za TailwindCSS
+├─ package.json                   # NPM skripte in odvisnosti
+├─ svelte.config.js               # Konfiguracija za SvelteKit
+├─ tsconfig.json                  # Konfiguracija za TypeScript
+└─ README.md                      # Dokumentacija projekta
 
 
 ---
