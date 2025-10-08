@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 467bdf93a97d11f675a41c757e53bd037ef5ab96
 <script lang="ts">
   import '../app.css';
   import { theme } from '$lib/stores/theme';
