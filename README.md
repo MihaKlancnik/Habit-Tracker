@@ -4,103 +4,135 @@ Preprosta spletna aplikacija za spremljanje vsakodnevnih navad, razvita v okviru
 
 ---
 
-## 📘 Namen projekta
-Habit Tracker omogoča uporabniku, da:
-- dodaja in ureja svoje navade,
-- označi, ali je nalogo opravil danes,
-- spremlja svoj niz zaporednih dni (streak),
-- pregleduje podrobnosti posamezne navade za zadnjih 14 dni,
-- izvozi podatke v CSV datoteko,
-- podvoji ali izbriše obstoječe navade,
-- počisti vse podatke iz lokalne shrambe.
+## 📘 Kaj omogoča
+- Dodajanje novih navad (obrazec A in B)
+- Označevanje opravljenega za današnji datum
+- Spremljanje niza zaporednih dni (streak)
+- Pregled za zadnjih 14 dni pri posamezni navadi
+- Urejanje navade (ime in opis) na strani s podrobnostmi
+- Podvajanje in brisanje navad (z možnostjo kratkega »Undo«)
+- Izvoz podatkov v CSV datoteko
+- Počisti vse podatke (localStorage)
+- Bulk akcije na Dashboardu: »Mark all today« in »Clear all today«
+- Random habit: gumb »Random (R)« v glavi, skoči na naključno navado
+- Pomoč z bližnjicami: »Shortcuts (?)«
 
-Aplikacija deluje popolnoma v brskalniku in shranjuje podatke v **localStorage**, zato ne potrebuje strežnika ali baze podatkov.
+Aplikacija deluje popolnoma v brskalniku in shranjuje podatke v **localStorage**, zato ne potrebuje strežnika ali baze.
+
+---
+
+## ⌨️ Bližnjice na tipkovnici
+- A — odpri dodajanje navade
+- R — odpri naključno navado
+- ? — prikaži/skrij pomoč z bližnjicami
 
 ---
 
 ## ⚙️ Tehnologije
-- **Frontend framework:** [SvelteKit](https://kit.svelte.dev/)
-- **Jezik:** TypeScript
-- **Stiliranje:** Tailwind CSS v4 + plugins (forms, typography)
-- **Orodje za gradnjo:** Vite
-- **Shramba podatkov:** LocalStorage
-- **Gostovanje:** [Vercel](https://vercel.com/)
-- **Nadzor verzij:** Git + GitHub
+- [SvelteKit](https://kit.svelte.dev/) (TypeScript)
+- Tailwind CSS v4 + plugins (forms, typography)
+- Vite (dev strežnik in build)
+- LocalStorage za podatke
+- GitHub za verzioniranje (možno gostovanje preko Vercel)
 
 ---
 
 ## 📂 Struktura projekta
+
+```
 web/
-│
 ├─ src/
 │  ├─ lib/
 │  │  ├─ components/              # Svelte komponente (npr. HabitCard)
 │  │  ├─ stores/                  # Svelte shrambe (habits.ts, theme.ts)
 │  │  └─ csv.ts                   # Funkcije za izvoz CSV
-│  │
 │  ├─ routes/
-│  │  ├─ +layout.svelte           # Glavna postavitev aplikacije
-│  │  ├─ +page.svelte             # Nadzorna plošča (Dashboard)
+│  │  ├─ +layout.svelte           # Glava/navigacija in glavni layout
+│  │  ├─ +page.svelte             # Dashboard
 │  │  ├─ add/+page.svelte         # Obrazec za dodajanje (A)
 │  │  ├─ add-b/+page.svelte       # Alternativni obrazec (B)
-│  │  ├─ habit/[id]/+page.svelte  # Podrobnosti posamezne navade
-│  │  └─ settings/+page.svelte    # Nastavitve in brisanje podatkov
-│  │
-│  ├─ app.css                     # Uvoz TailwindCSS
-│  └─ app.html                    # Glavna HTML predloga
-│
-├─ postcss.config.cjs             # Konfiguracija za PostCSS
-├─ tailwind.config.ts             # Konfiguracija za TailwindCSS
-├─ package.json                   # NPM skripte in odvisnosti
-├─ svelte.config.js               # Konfiguracija za SvelteKit
-├─ tsconfig.json                  # Konfiguracija za TypeScript
-└─ README.md                      # Dokumentacija projekta
-
+│  │  ├─ habit/[id]/+page.svelte  # Podrobnosti navade (14 dni, edit)
+│  │  └─ settings/+page.svelte    # Nastavitve (brisanje vseh podatkov)
+│  ├─ app.css                     # TailwindCSS
+│  └─ app.html                    # HTML predloga (aplicira dark class ob zagonu)
+├─ tailwind.config.ts             # Tailwind konfiguracija (darkMode: 'class')
+├─ package.json                   # Skripte in odvisnosti
+├─ svelte.config.js               # SvelteKit konfiguracija
+├─ tsconfig.json                  # TypeScript konfiguracija
+└─ README.md                      # Ta dokument
+```
 
 ---
 
-## 🧩 Namestitev v lokalno okolje
+## 🧩 Namestitev in zagon (Windows)
 
-🧩 Namestitev v lokalno okolje
+1) Namesti Node.js
+- Prenesi z: https://nodejs.org
+- Preveri namestitev:
 
-Namesti Node.js
-
-Prenesi z uradne strani: https://nodejs.org
-
-Po namestitvi preveri, da deluje pravilno:
-
+```powershell
 node -v
 npm -v
+```
 
+2) Koda
 
-Če vidiš številke verzij (npr. v20.12.0 in 10.5.0), je vse v redu.
-
-Kloniraj repozitorij iz GitHub-a
-Odpri ukazno vrstico (PowerShell ali Terminal) in izvedi:
-
+```powershell
 git clone https://github.com/<tvoje-uporabnisko-ime>/Habit-Tracker.git
 cd Habit-Tracker/web
+```
 
+3) Namesti odvisnosti
 
-🔹 Opomba: mapa web vsebuje izvorno kodo aplikacije.
-
-Namesti vse odvisnosti projekta
-V mapi web zaženi:
-
+```powershell
 npm install
+```
 
+4) Zagon v razvojnem načinu
 
-Ta ukaz bo namestil vse potrebne pakete (SvelteKit, TailwindCSS, ipd.).
+V PowerShell so lahko skripti blokirani. Če ukaz `npm run dev` ne deluje, uporabi varianto prek cmd:
 
-Zaženi aplikacijo v razvojnem načinu
+```powershell
+cmd /c npm run dev
+```
 
-npm run dev
+Nato odpri:
 
+```
+http://localhost:5173
+```
 
-Če je vse pravilno nameščeno, boš v terminalu videl izpis, podoben temu:
+---
 
-Local:   http://localhost:5173
+## 🏗️ Build in predogled produkcije
 
+```powershell
+cmd /c npm run build
+cmd /c npm run preview
+```
 
-➡️ Odpri povezavo http://localhost:5173
- v brskalniku.
+---
+
+## 📤 Izvoz CSV
+
+- Na Dashboardu klikni »Export CSV«.
+- CSV vsebuje: id, name, description, createdAt, completions (datumi ločeni s podpičji).
+- Opomba: če imaš zelo stare zapise brez seznama `completions`, posodobi na zadnjo verzijo (aplikacija že ščiti te primere).
+
+---
+
+## 🧹 Brisanje podatkov
+
+- V »Settings« lahko pobrišeš vse podatke (localStorage).
+- Dejanja, kot je brisanje posamezne navade, prikazujejo kratko možnost »Undo«.
+
+---
+
+## 🧪 Znane posebnosti / odpravljanje težav
+- PowerShell lahko blokira izvajanje skriptov (`ExecutionPolicy`). V tem primeru uporabi ukaze prek `cmd /c` (glej zgoraj) ali zaženi terminal kot skrbnik ter spremeni politiko le, če razumeš posledice.
+- Če pride do 500 napake ob nalaganju, preveri, da v datotekah ni »merge conflict« markerjev (<<<<<<<, =======, >>>>>>>) in da je localStorage veljaven (v »Settings« lahko počistiš vse).
+
+---
+
+## 📄 Licenca
+Projekt je namenjen študijskemu namenu; licenca po dogovoru avtorja.
