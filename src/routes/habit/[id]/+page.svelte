@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { habits, type Habit, toggleDate, todayISO } from '$lib/stores/habits';
+  import { habits, type Habit, toggleDate, todayISO, updateHabit } from '$lib/stores/habits';
   import { page } from '$app/stores';
   import { derived } from 'svelte/store';
 
@@ -20,11 +20,49 @@
     return out;
   }
   $: days = lastDays(14);
+
+  // simple edit mode
+  let editing = false;
+  let draftName = '';
+  let draftDesc = '';
+  $: if ($current && editing) {
+    draftName = $current.name;
+    draftDesc = $current.description ?? '';
+  }
+
+  function startEdit() {
+    if (!$current) return;
+    editing = true;
+    draftName = $current.name;
+    draftDesc = $current.description ?? '';
+  }
+  function saveEdit() {
+    if (!$current) return;
+    updateHabit($current.id, { name: draftName.trim(), description: draftDesc.trim() });
+    editing = false;
+  }
+  function cancelEdit() {
+    editing = false;
+  }
 </script>
 
 {#if $current}
-  <h1 class="text-2xl font-bold mb-2">{$current.name}</h1>
-  {#if $current.description}<p class="mb-4 text-gray-600 dark:text-gray-300">{$current.description}</p>{/if}
+  {#if !editing}
+    <h1 class="text-2xl font-bold mb-2">{$current.name}</h1>
+    {#if $current.description}<p class="mb-4 text-gray-600 dark:text-gray-300">{$current.description}</p>{/if}
+    <button class="rounded border px-3 py-1 mb-4" on:click={startEdit}>Edit</button>
+  {:else}
+    <div class="space-y-2 mb-4">
+      <label class="block text-sm font-medium" for="name">Name</label>
+      <input id="name" class="w-full rounded border p-2" bind:value={draftName} />
+      <label class="block text-sm font-medium" for="desc">Description</label>
+      <textarea id="desc" class="w-full rounded border p-2" rows="3" bind:value={draftDesc}></textarea>
+      <div class="flex gap-2">
+        <button class="rounded bg-black text-white px-3 py-1" on:click={saveEdit}>Save</button>
+        <button class="rounded border px-3 py-1" on:click={cancelEdit}>Cancel</button>
+      </div>
+    </div>
+  {/if}
 
   <h2 class="font-semibold mb-2">Last 14 days</h2>
   <div class="grid grid-cols-7 gap-2 mb-6">

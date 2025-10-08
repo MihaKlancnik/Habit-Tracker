@@ -1,6 +1,6 @@
 <script lang="ts">
   import HabitCard from '$lib/components/HabitCard.svelte';
-  import { habits, type Habit, todayISO, calcStreak } from '$lib/stores/habits';
+  import { habits, type Habit, todayISO, calcStreak, setTodayAll } from '$lib/stores/habits';
   import { habitsToCSV, downloadCSV } from '$lib/csv';
 
   // UI state
@@ -84,6 +84,10 @@
   </select>
 
   <button class="rounded border px-3 py-2 ml-auto" on:click={exportCSV}>Export CSV</button>
+  <div class="flex gap-2 ml-2">
+    <button class="rounded border px-3 py-2" on:click={() => setTodayAll(true)}>Mark all today</button>
+    <button class="rounded border px-3 py-2" on:click={() => setTodayAll(false)}>Clear all today</button>
+  </div>
 </div>
 
 {#if list.length === 0}

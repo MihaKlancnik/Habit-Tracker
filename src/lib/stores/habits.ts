@@ -82,6 +82,37 @@ export function duplicateHabit(habitId: string) {
   });
 }
 
+export function updateHabit(
+  habitId: string,
+  changes: Partial<Pick<Habit, 'name' | 'description' | 'createdAt' | 'completions'>>
+) {
+  habits.update((list) =>
+    list.map((h) => {
+      if (h.id !== habitId) return h;
+      const next: Habit = {
+        ...h,
+        ...(changes.name !== undefined ? { name: String(changes.name) } : {}),
+        ...(changes.description !== undefined ? { description: changes.description } : {}),
+        ...(changes.createdAt !== undefined ? { createdAt: changes.createdAt } : {}),
+        ...(changes.completions !== undefined ? { completions: [...changes.completions] } : {}),
+      };
+      return next;
+    })
+  );
+}
+
+export function setTodayAll(done: boolean) {
+  const iso = todayISO();
+  habits.update((list) =>
+    list.map((h) => {
+      const set = new Set(h.completions ?? []);
+      if (done) set.add(iso);
+      else set.delete(iso);
+      return { ...h, completions: Array.from(set).sort() };
+    })
+  );
+}
+
 export function calcStreak(h: Habit): number {
   const done = new Set(h.completions ?? []);
   let streak = 0;
