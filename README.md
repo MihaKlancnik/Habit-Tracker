@@ -1,44 +1,103 @@
-# Habit-Tracker
+# 🧠 Habit Tracker
 
-Something fast for faks
+Preprosta spletna aplikacija za spremljanje vsakodnevnih navad, razvita v okviru študijskega projekta.
 
 ---
 
-## sv
+## 📘 Namen projekta
+Habit Tracker omogoča uporabniku, da:
+- dodaja in ureja svoje navade,
+- označi, ali je nalogo opravil danes,
+- spremlja svoj niz zaporednih dni (streak),
+- pregleduje podrobnosti posamezne navade za zadnjih 14 dni,
+- izvozi podatke v CSV datoteko,
+- podvoji ali izbriše obstoječe navade,
+- počisti vse podatke iz lokalne shrambe.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Aplikacija deluje popolnoma v brskalniku in shranjuje podatke v **localStorage**, zato ne potrebuje strežnika ali baze podatkov.
 
-## Creating a project
+---
 
-If you're seeing this, you've probably already done this step. Congrats!
+## ⚙️ Tehnologije
+- **Frontend framework:** [SvelteKit](https://kit.svelte.dev/)
+- **Jezik:** TypeScript
+- **Stiliranje:** Tailwind CSS v4 + plugins (forms, typography)
+- **Orodje za gradnjo:** Vite
+- **Shramba podatkov:** LocalStorage
+- **Gostovanje:** [Vercel](https://vercel.com/)
+- **Nadzor verzij:** Git + GitHub
 
-```sh
-# create a new project in the current directory
-npx sv create
+---
 
-# create a new project in my-app
-npx sv create my-app
-```
+## 📂 Struktura projekta
+web/
+│
+├─ src/
+│ ├─ lib/
+│ │ ├─ components/ # Svelte komponente (npr. HabitCard)
+│ │ ├─ stores/ # Svelte shrambe (habits.ts, theme.ts)
+│ │ └─ csv.ts # Funkcije za izvoz CSV
+│ ├─ routes/
+│ │ ├─ +layout.svelte # Glavna postavitev
+│ │ ├─ +page.svelte # Nadzorna plošča (Dashboard)
+│ │ ├─ add/+page.svelte # Obrazec za dodajanje (A)
+│ │ ├─ add-b/+page.svelte # Obrazec za dodajanje (B)
+│ │ ├─ habit/[id]/+page.svelte # Podrobnosti posamezne navade
+│ │ └─ settings/+page.svelte # Nastavitve in brisanje podatkov
+│ ├─ app.css # Uvoz Tailwind CSS
+│ └─ app.html # Glavna HTML predloga
+│
+├─ tailwind.config.ts # Tailwind konfiguracija
+├─ postcss.config.cjs # PostCSS konfiguracija
+├─ package.json # NPM konfiguracija in skripte
+├─ tsconfig.json # TypeScript konfiguracija
+└─ svelte.config.js # SvelteKit konfiguracija
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+---
 
-```sh
+## 🧩 Namestitev v lokalno okolje
+
+🧩 Namestitev v lokalno okolje
+
+Namesti Node.js
+
+Prenesi z uradne strani: https://nodejs.org
+
+Po namestitvi preveri, da deluje pravilno:
+
+node -v
+npm -v
+
+
+Če vidiš številke verzij (npr. v20.12.0 in 10.5.0), je vse v redu.
+
+Kloniraj repozitorij iz GitHub-a
+Odpri ukazno vrstico (PowerShell ali Terminal) in izvedi:
+
+git clone https://github.com/<tvoje-uporabnisko-ime>/Habit-Tracker.git
+cd Habit-Tracker/web
+
+
+🔹 Opomba: mapa web vsebuje izvorno kodo aplikacije.
+
+Namesti vse odvisnosti projekta
+V mapi web zaženi:
+
+npm install
+
+
+Ta ukaz bo namestil vse potrebne pakete (SvelteKit, TailwindCSS, ipd.).
+
+Zaženi aplikacijo v razvojnem načinu
+
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
-## Building
+Če je vse pravilno nameščeno, boš v terminalu videl izpis, podoben temu:
 
-To create a production version of your app:
+Local:   http://localhost:5173
 
-```sh
-npm run build
-```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+➡️ Odpri povezavo http://localhost:5173
+ v brskalniku.
