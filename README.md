@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Habit-Tracker
+
 Something fast for faks
-=======
-=======
->>>>>>> 467bdf93a97d11f675a41c757e53bd037ef5ab96
-# sv
+
+---
+
+## sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
@@ -43,7 +42,3 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-<<<<<<< HEAD
->>>>>>> 467bdf9 (init habit tracker)
-=======
->>>>>>> 467bdf93a97d11f675a41c757e53bd037ef5ab96
