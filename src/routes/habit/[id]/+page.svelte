@@ -1,5 +1,6 @@
 <script lang="ts">
   import { habits, type Habit, toggleDate, todayISO, updateHabit } from '$lib/stores/habits';
+  import ProgressChart from '$lib/components/ProgressChart.svelte';
   import { page } from '$app/stores';
   import { derived } from 'svelte/store';
 
@@ -82,6 +83,8 @@
   </div>
 
   <a href="/" class="underline">← Back</a>
+  <h2 class="font-semibold mt-6 mb-2">Progress (last 8 weeks)</h2>
+  <ProgressChart habit={$current} />
 {:else}
   <p>Habit not found. <a href="/" class="underline">Go back</a></p>
 {/if}

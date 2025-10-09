@@ -15,8 +15,8 @@ export const todayISO = () => {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 };
 
-type UnknownHabit = Record<string, unknown> | null | undefined;
-function normalizeHabit(x: UnknownHabit): Habit {
+export type UnknownHabit = Record<string, unknown> | null | undefined;
+export function normalizeHabit(x: UnknownHabit): Habit {
   return {
     id: String(x?.id ?? (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2))),
     name: String(x?.name ?? 'Unnamed'),
@@ -111,6 +111,26 @@ export function setTodayAll(done: boolean) {
       return { ...h, completions: Array.from(set).sort() };
     })
   );
+}
+
+export function importHabits(items: UnknownHabit[] | Habit[], mode: 'replace' | 'append' = 'append') {
+  const norm = (items ?? []).map(normalizeHabit);
+  if (mode === 'replace') {
+    habits.set(norm);
+    return;
+  }
+  // append with de-dup by id (keep existing on conflict)
+  habits.update((list) => {
+    const seen = new Set(list.map((h) => h.id));
+    const merged = [...list];
+    for (const h of norm) {
+      if (!seen.has(h.id)) {
+        merged.push(h);
+        seen.add(h.id);
+      }
+    }
+    return merged;
+  });
 }
 
 export function calcStreak(h: Habit): number {
