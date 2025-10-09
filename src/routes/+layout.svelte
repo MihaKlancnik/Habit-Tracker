@@ -44,15 +44,17 @@
 
 
 <div class:dark={$theme === 'dark'}
-     class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-  <header class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="font-semibold">Habit Tracker</a>
-    <nav class="flex gap-4">
-  <a class="underline" href="/add">Add (1)</a>
-      <a href="/settings">Settings</a>
-      <button type="button" class="rounded border px-2 py-1" on:click={goRandom}>Random (R)</button>
-      <button type="button" class="rounded border px-2 py-1" on:click={() => (showHelp = !showHelp)} aria-haspopup="dialog">Shortcuts (?)</button>
-    </nav>
+     class="min-h-screen bg-gray-100 dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+  <header class="sticky top-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="font-semibold tracking-tight">Habit Tracker</a>
+      <nav class="flex gap-2">
+        <a class="rounded px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-800" href="/add">Add (1)</a>
+        <a class="rounded px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-800" href="/settings">Settings</a>
+        <button type="button" class="rounded px-3 py-1.5 border hover:bg-gray-50 dark:hover:bg-gray-800" on:click={goRandom}>Random (R)</button>
+        <button type="button" class="rounded px-3 py-1.5 border hover:bg-gray-50 dark:hover:bg-gray-800" on:click={() => (showHelp = !showHelp)} aria-haspopup="dialog">Shortcuts (?)</button>
+      </nav>
+    </div>
   </header>
   <main class="max-w-3xl mx-auto px-4 py-6">
     <slot />

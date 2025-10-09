@@ -50,47 +50,46 @@
   }
 </script>
 
-<h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+<h1 class="text-3xl font-bold mb-4 tracking-tight">Dashboard</h1>
 
 <!-- Quick stats (also useful to confirm no 500s while computing) -->
-<div class="grid grid-cols-3 gap-3 mb-4">
-  <div class="p-3 rounded bg-white shadow">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+  <div class="p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
     <div class="text-xs text-gray-500">Total habits</div>
     <div class="text-2xl font-semibold">{total}</div>
   </div>
-  <div class="p-3 rounded bg-white shadow">
+  <div class="p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
     <div class="text-xs text-gray-500">Done today</div>
     <div class="text-2xl font-semibold">{doneToday}</div>
   </div>
-  <div class="p-3 rounded bg-white shadow">
+  <div class="p-4 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
     <div class="text-xs text-gray-500">Best streak</div>
     <div class="text-2xl font-semibold">{bestStreak}</div>
   </div>
 </div>
 
 <!-- Controls -->
-<div class="mb-4 flex flex-wrap gap-3 items-center">
-  <a class="rounded bg-black text-white px-4 py-2" href="/add">+ Add habit (1)</a>
-
-  <input class="rounded border p-2" placeholder="Search habits…" bind:value={q} />
+<div class="mb-6 flex flex-wrap gap-3 items-center">
+  <a class="rounded-lg bg-black text-white px-4 py-2" href="/add">+ Add habit (1)</a>
+  <input class="rounded-lg border p-2" placeholder="Search habits…" bind:value={q} />
   <label class="flex items-center gap-2">
-    <input type="checkbox" bind:checked={onlyDoneToday} />
+    <input type="checkbox" class="rounded" bind:checked={onlyDoneToday} />
     <span>Only done today</span>
   </label>
-  <select class="rounded border p-2" bind:value={sortBy}>
+  <select class="rounded-lg border p-2" bind:value={sortBy}>
     <option value="created">Sort: Newest</option>
     <option value="name">Sort: Name</option>
   </select>
 
-  <button class="rounded border px-3 py-2 ml-auto" on:click={exportCSV}>Export CSV</button>
-  <div class="flex gap-2 ml-2">
-    <button class="rounded border px-3 py-2" on:click={() => setTodayAll(true)}>Mark all today</button>
-    <button class="rounded border px-3 py-2" on:click={() => setTodayAll(false)}>Clear all today</button>
+  <div class="ml-auto flex gap-2">
+    <button class="rounded-lg border px-3 py-2" on:click={exportCSV}>Export CSV</button>
+    <button class="rounded-lg border px-3 py-2" on:click={() => setTodayAll(true)}>Mark all today</button>
+    <button class="rounded-lg border px-3 py-2" on:click={() => setTodayAll(false)}>Clear all today</button>
   </div>
 </div>
 
 {#if list.length === 0}
-  <p class="text-gray-600">No habits yet. Use Add (A) or Add (B) above.</p>
+  <p class="text-gray-600">No habits yet. Use the Add (1) button above.</p>
 {:else if ordered.length === 0}
   <p class="text-gray-600">No matches.</p>
 {:else}
@@ -102,9 +101,9 @@
 {/if}
 
 {#if lastDeleted}
-  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-white border shadow rounded px-4 py-3 flex items-center gap-4">
+  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg rounded-lg px-4 py-3 flex items-center gap-4">
     <span>Habit deleted.</span>
-    <button class="rounded border px-3 py-1" on:click={undoDelete}>Undo</button>
-    <button class="text-gray-500" on:click={() => (lastDeleted = null)}>Dismiss</button>
+    <button class="rounded-lg border px-3 py-1" on:click={undoDelete}>Undo</button>
+    <button class="text-gray-500 hover:text-gray-700" on:click={() => (lastDeleted = null)}>Dismiss</button>
   </div>
 {/if}

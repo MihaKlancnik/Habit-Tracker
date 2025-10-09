@@ -4,13 +4,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>
-			// Apply saved theme ASAP to avoid flash and ensure dark variants work
+			// Apply saved theme ASAP to avoid flash; default is light for all new visitors
 			(function() {
 				try {
 					var t = localStorage.getItem('theme');
-					var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-					var dark = t ? t === 'dark' : prefersDark;
-					document.documentElement.classList.toggle('dark', dark);
+					document.documentElement.classList.toggle('dark', t === 'dark');
 				} catch (_) { /* noop */ }
 			})();
 		</script>

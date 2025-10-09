@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme } from '$lib/stores/theme'; // you can keep/remove the theme store if unused
+  import { theme } from '$lib/stores/theme';
   import { habits, importHabits } from '$lib/stores/habits';
   import { parseCSV, parseJSON, habitsToCSV, downloadCSV } from '$lib/csv';
 
@@ -57,6 +57,13 @@
 <h1 class="text-2xl font-bold mb-4">Settings</h1>
 
 <div class="space-y-6">
+  <section>
+    <h2 class="font-semibold mb-2">Appearance</h2>
+    <div class="flex items-center gap-3">
+      <label class="flex items-center gap-2"><input type="radio" name="theme" value="light" bind:group={$theme} on:change={() => theme.set('light')} /> Light</label>
+      <label class="flex items-center gap-2"><input type="radio" name="theme" value="dark" bind:group={$theme} on:change={() => theme.set('dark')} /> Dark</label>
+    </div>
+  </section>
   <section>
     <h2 class="font-semibold mb-2">Data</h2>
     <button class="rounded border px-3 py-2 text-red-600" on:click={clearAll}>Clear all data</button>
