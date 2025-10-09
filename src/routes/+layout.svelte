@@ -48,8 +48,7 @@
   <header class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
     <a href="/" class="font-semibold">Habit Tracker</a>
     <nav class="flex gap-4">
-  <a href="/add">Add (1)</a>
-      <a href="/add-b">Add (B)</a>
+  <a class="underline" href="/add">Add (1)</a>
       <a href="/settings">Settings</a>
       <button type="button" class="rounded border px-2 py-1" on:click={goRandom}>Random (R)</button>
       <button type="button" class="rounded border px-2 py-1" on:click={() => (showHelp = !showHelp)} aria-haspopup="dialog">Shortcuts (?)</button>
@@ -65,7 +64,7 @@
     <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded shadow p-4 w-full max-w-md">
       <h2 class="text-lg font-semibold mb-2">Keyboard shortcuts</h2>
       <ul class="list-disc pl-5 space-y-1">
-  <li><strong>1</strong> — Add habit</li>
+        <li><strong>1</strong> — Add habit</li>
         <li><strong>R</strong> — Random habit</li>
         <li><strong>?</strong> — Toggle this help</li>
       </ul>

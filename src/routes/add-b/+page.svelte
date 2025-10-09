@@ -1,4 +1,8 @@
 <script lang="ts">
+  // Note: This route is kept for future A/B testing but hidden from navigation.
+  // You can disable it entirely by redirecting to /add below.
+  // import { goto } from '$app/navigation';
+  // goto('/add');
   import { habits, type Habit } from '$lib/stores/habits';
   import { goto } from '$app/navigation';
 

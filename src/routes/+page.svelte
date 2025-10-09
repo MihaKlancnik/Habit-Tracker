@@ -70,8 +70,7 @@
 
 <!-- Controls -->
 <div class="mb-4 flex flex-wrap gap-3 items-center">
-  <a class="underline" href="/add">Add (A)</a>
-  <a class="underline" href="/add-b">Add (B)</a>
+  <a class="rounded bg-black text-white px-4 py-2" href="/add">+ Add habit (1)</a>
 
   <input class="rounded border p-2" placeholder="Search habits…" bind:value={q} />
   <label class="flex items-center gap-2">
