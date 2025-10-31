@@ -14,17 +14,13 @@ Preprosta spletna aplikacija za spremljanje vsakodnevnih navad, razvita v okviru
 - Izvoz podatkov v CSV datoteko
 - Počisti vse podatke (localStorage)
 - Bulk akcije na Dashboardu: »Mark all today« in »Clear all today«
-- Random habit: gumb »Random (R)« v glavi, skoči na naključno navado
-- Pomoč z bližnjicami: »Shortcuts (?)«
+ - Random habit: gumb »Random« v glavi, skoči na naključno navado
 
 Aplikacija deluje popolnoma v brskalniku in shranjuje podatke v **localStorage**, zato ne potrebuje strežnika ali baze.
 
 ---
 
-## ⌨️ Bližnjice na tipkovnici
-- A — odpri dodajanje navade
-- R — odpri naključno navado
-- ? — prikaži/skrij pomoč z bližnjicami
+<!-- Keyboard shortcuts removed -->
 
 ---
 

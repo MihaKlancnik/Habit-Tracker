@@ -5,6 +5,8 @@ export type Habit = {
   id: string;
   name: string;
   description?: string;
+  /** optional numeric target (e.g. pages, minutes) */
+  target?: number;
   createdAt: string;
   completions: string[]; // YYYY-MM-DD (local)
 };
@@ -21,6 +23,13 @@ export function normalizeHabit(x: UnknownHabit): Habit {
     id: String(x?.id ?? (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2))),
     name: String(x?.name ?? 'Unnamed'),
     description: x?.description != null ? String(x.description) : undefined,
+    target: (() => {
+      const t = (x as Record<string, unknown> | undefined)?.target;
+      if (t == null) return undefined;
+      if (typeof t === 'number' && Number.isFinite(t)) return t as number;
+      const n = Number(String(t));
+      return Number.isFinite(n) ? n : undefined;
+    })(),
     createdAt: typeof x?.createdAt === 'string' ? x.createdAt : new Date().toISOString(),
     completions: Array.isArray((x as Record<string, unknown> | undefined)?.completions)
       ? ((x as Record<string, unknown>).completions as unknown[]).map((d) => String(d))
@@ -84,7 +93,7 @@ export function duplicateHabit(habitId: string) {
 
 export function updateHabit(
   habitId: string,
-  changes: Partial<Pick<Habit, 'name' | 'description' | 'createdAt' | 'completions'>>
+  changes: Partial<Pick<Habit, 'name' | 'description' | 'createdAt' | 'completions' | 'target'>>
 ) {
   habits.update((list) =>
     list.map((h) => {
@@ -95,6 +104,7 @@ export function updateHabit(
         ...(changes.description !== undefined ? { description: changes.description } : {}),
         ...(changes.createdAt !== undefined ? { createdAt: changes.createdAt } : {}),
         ...(changes.completions !== undefined ? { completions: [...changes.completions] } : {}),
+        ...(changes.target !== undefined ? { target: typeof changes.target === 'number' ? changes.target : Number(changes.target) } : {}),
       };
       return next;
     })

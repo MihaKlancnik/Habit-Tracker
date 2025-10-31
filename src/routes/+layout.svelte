@@ -14,21 +14,7 @@
     document.documentElement.classList.toggle('dark', $theme === 'dark');
   }
 
-  if (browser) {
-    onMount(() => {
-      const onKey = (e: KeyboardEvent) => {
-        if (e.key === '1') {
-          window.location.href = '/add';
-        } else if (e.key.toLowerCase() === 'r') {
-          goRandom();
-        } else if (e.key === '?') {
-          showHelp = !showHelp;
-        }
-      };
-      window.addEventListener('keydown', onKey);
-      return () => window.removeEventListener('keydown', onKey);
-    });
-  }
+  // Keyboard shortcuts removed
 
   // Random habit navigation (client only)
   function goRandom() {
@@ -39,7 +25,7 @@
     goto(`/habit/${id}`);
   }
 
-  let showHelp = false;
+  // Shortcuts help removed
 </script>
 
 
@@ -49,10 +35,9 @@
     <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="/" class="font-semibold tracking-tight">Habit Tracker</a>
       <nav class="flex gap-2">
-        <a class="rounded px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-800" href="/add">Add (1)</a>
+  <a class="rounded px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-800" href="/add">Add</a>
         <a class="rounded px-3 py-1.5 hover:bg-gray-100 dark:hover:bg-gray-800" href="/settings">Settings</a>
-        <button type="button" class="rounded px-3 py-1.5 border hover:bg-gray-50 dark:hover:bg-gray-800" on:click={goRandom}>Random (R)</button>
-        <button type="button" class="rounded px-3 py-1.5 border hover:bg-gray-50 dark:hover:bg-gray-800" on:click={() => (showHelp = !showHelp)} aria-haspopup="dialog">Shortcuts (?)</button>
+  <button type="button" class="rounded px-3 py-1.5 border hover:bg-gray-50 dark:hover:bg-gray-800" on:click={goRandom}>Random</button>
       </nav>
     </div>
   </header>
@@ -61,18 +46,4 @@
   </main>
 </div>
 
-{#if showHelp}
-  <div class="fixed inset-0 bg-black/50 flex items-center justify-center" role="dialog" aria-modal="true">
-    <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded shadow p-4 w-full max-w-md">
-      <h2 class="text-lg font-semibold mb-2">Keyboard shortcuts</h2>
-      <ul class="list-disc pl-5 space-y-1">
-        <li><strong>1</strong> — Add habit</li>
-        <li><strong>R</strong> — Random habit</li>
-        <li><strong>?</strong> — Toggle this help</li>
-      </ul>
-      <div class="text-right mt-4">
-        <button type="button" class="rounded border px-3 py-1" on:click={() => (showHelp = false)}>Close</button>
-      </div>
-    </div>
-  </div>
-{/if}
+<!-- Shortcuts help removed -->

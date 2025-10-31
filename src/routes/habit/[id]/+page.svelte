@@ -26,6 +26,10 @@
   let editing = false;
   let draftName = '';
   let draftDesc = '';
+  const MAX_NAME = 100;
+  const MAX_DESC = 200;
+  let draftNameError = '';
+  let draftDescError = '';
   $: if ($current && editing) {
     draftName = $current.name;
     draftDesc = $current.description ?? '';
@@ -39,6 +43,20 @@
   }
   function saveEdit() {
     if (!$current) return;
+    draftNameError = '';
+    draftDescError = '';
+    if (!draftName.trim()) {
+      draftNameError = 'Name is required';
+      return;
+    }
+    if (draftName.trim().length > MAX_NAME) {
+      draftNameError = `Name must be at most ${MAX_NAME} characters`;
+      return;
+    }
+    if (draftDesc && draftDesc.length > MAX_DESC) {
+      draftDescError = `Description must be at most ${MAX_DESC} characters`;
+      return;
+    }
     updateHabit($current.id, { name: draftName.trim(), description: draftDesc.trim() });
     editing = false;
   }

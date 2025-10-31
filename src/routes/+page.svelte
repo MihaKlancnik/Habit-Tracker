@@ -70,7 +70,9 @@
 
 <!-- Controls -->
 <div class="mb-6 flex flex-wrap gap-3 items-center">
-  <a class="rounded-lg bg-black text-white px-4 py-2" href="/add">+ Add habit (1)</a>
+  <a class="rounded-lg bg-black text-white px-4 py-2" href="/add">+ Add habit</a>
+  <a class="rounded-lg bg-black text-white px-4 py-2" href="/add-number">+ Add numeric</a>
+  <a class="rounded-lg bg-black text-white px-4 py-2" href="/add-short">+ Add short</a>
   <input class="rounded-lg border p-2" placeholder="Search habits…" bind:value={q} />
   <label class="flex items-center gap-2">
     <input type="checkbox" class="rounded" bind:checked={onlyDoneToday} />
@@ -89,7 +91,7 @@
 </div>
 
 {#if list.length === 0}
-  <p class="text-gray-600">No habits yet. Use the Add (1) button above.</p>
+  <p class="text-gray-600">No habits yet. Use the Add button above.</p>
 {:else if ordered.length === 0}
   <p class="text-gray-600">No matches.</p>
 {:else}
