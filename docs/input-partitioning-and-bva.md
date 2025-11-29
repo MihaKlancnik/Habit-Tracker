@@ -27,6 +27,8 @@ Struktura dokumenta za vsako polje:
 3. Analiza mejnih vrednosti (kanonična BVA)
 4. Končni seznam testnih primerov (vhod, pričakovani rezultat)
 
+
+alkjsdb
 --------------------------------------------------------------------------------
 
 ## 1) `name` (vsi obrazci)
