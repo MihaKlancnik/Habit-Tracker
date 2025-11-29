@@ -10,12 +10,10 @@ Kaj potrebujete
 - Osnovno znanje dela z brskalnikom in datotekami (CSV)
 
 Koraki (osnovni, priporočeni)
-1. Odpiranje aplikacije
-   - Odprite aplikacijo Habit-Tracker 
-2. Izvozite csv
-   - Poiščite gumb za izvoz csv-ja
-3. Shranite csv
-   - Poiščite prostor kamor boste shranili ustvarjeno csv datoteko.
+1. Odprite aplikacijo Habit-Tracker https://habit-tracker-roan-xi.vercel.app/
+2. Pomaknite miško na gumb Export CSV in kliknite
+3. Poiščite prostor kamor boste shranili ustvarjeno csv datoteko in jo shranite.
+4. Datoteka se je shranila na vaš sistem. Poiščite jo in jo preglejte
 
 Kratek seznam za izvedbo (hitro)
 1. Odpri spletno stran.

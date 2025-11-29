@@ -9,16 +9,12 @@ Potrebno/opravljeno s strani udeleženca
 - Približno 5–10 minut časa
 
 Koraki (osnovni, priporočeni)
-1. Odpiranje aplikacije
-   - Odprite aplikacijo Habit-Tracker 
-2. Pojdite na stran za dodajanje navade
-   - Poiščite gumb za dodajanje navade
+1. Odprite aplikacijo Habit-Tracker https://habit-tracker-roan-xi.vercel.app/
+2. Pomaknite miško na gumb + Add habit in kliknite
 3. Izpolnite podatke o navadi
    - Ime navade: vnesite kratko, razumljivo ime (npr. "Jutranja vadba").
-   - Opis (neobvezno): dodajte kratek opis cilja ali pravila.
-4. Shrani navado
-   - Kliknite gumb za shranjevanje
-   - Preverite, da je nova navada vidna v seznamu navad in da so nastavitve pravilne.
+   - Opis (neobvezno): dodajte kratek opis cilja ali pravila. (npr. "10 počepov in pozdrav soncu")
+4. Pomaknite miško na gumb Save in ga kliknite. S tem shranete navado
 
 Kratek seznam za izvedbo (hitro)
 1. Odpri spletno stran.
