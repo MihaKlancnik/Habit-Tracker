@@ -132,3 +132,12 @@ cmd /c npm run preview
 
 ## 📄 Licenca
 Projekt je namenjen študijskemu namenu; licenca po dogovoru avtorja.
+
+
+## TESTI
+$env:E2E_HEADLESS='false'; $env:E2E_SLOW_MS='200'; npm run test:e2e
+
+$env:E2E_HEADLESS='false'; $env:E2E_SLOW_MS='300'; npx playwright test tests/e2e/import-csv.spec.ts
+
+
+$env:E2E_HEADLESS='false'; $env:E2E_SLOW_MS='300'; npx playwright test tests/e2e/import-csv.spec.ts
